@@ -1,6 +1,6 @@
 
 var should = require('chai').should()
-    , meanSeed = require('../index')
+    , meanSeed = require('../modules/meanSeed')
     , schemaToSeedData = meanSeed.schemaToSeedData;
 
 describe('#meanSeed', function() {
