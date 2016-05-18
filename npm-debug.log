@@ -40,16 +40,16 @@
 23 verbose setPermissions git+https://github.com/kromitj/mean-seed.git set permissions on /Users/Administrator/.npm/_git-remotes/git-https-github-com-kromitj-mean-seed-git-82fd40f0
 24 verbose resolveHead git+https://github.com/kromitj/mean-seed.git original treeish: master
 25 info git [ 'rev-list', '-n1', 'master' ]
-26 silly resolveHead git+https://github.com/kromitj/mean-seed.git resolved treeish: 9ce85765e4f4e518408281cf94ca20489c27555e
-27 verbose resolveHead git+https://github.com/kromitj/mean-seed.git resolved Git URL: git+https://github.com/kromitj/mean-seed.git#9ce85765e4f4e518408281cf94ca20489c27555e
-28 silly resolveHead Git working directory: /var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-14988-ad3cb077/git-cache-a8497b60/9ce85765e4f4e518408281cf94ca20489c27555e
+26 silly resolveHead git+https://github.com/kromitj/mean-seed.git resolved treeish: 9f975a24ecaebfd6f37f4898075e0fe45d77d4c1
+27 verbose resolveHead git+https://github.com/kromitj/mean-seed.git resolved Git URL: git+https://github.com/kromitj/mean-seed.git#9f975a24ecaebfd6f37f4898075e0fe45d77d4c1
+28 silly resolveHead Git working directory: /var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-15146-5463ef6b/git-cache-d05a7697/9f975a24ecaebfd6f37f4898075e0fe45d77d4c1
 29 info git [ 'clone',
 29 info git   '/Users/Administrator/.npm/_git-remotes/git-https-github-com-kromitj-mean-seed-git-82fd40f0',
-29 info git   '/var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-14988-ad3cb077/git-cache-a8497b60/9ce85765e4f4e518408281cf94ca20489c27555e' ]
-30 verbose cloneResolved git+https://github.com/kromitj/mean-seed.git clone Cloning into '/var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-14988-ad3cb077/git-cache-a8497b60/9ce85765e4f4e518408281cf94ca20489c27555e'...
+29 info git   '/var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-15146-5463ef6b/git-cache-d05a7697/9f975a24ecaebfd6f37f4898075e0fe45d77d4c1' ]
+30 verbose cloneResolved git+https://github.com/kromitj/mean-seed.git clone Cloning into '/var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-15146-5463ef6b/git-cache-d05a7697/9f975a24ecaebfd6f37f4898075e0fe45d77d4c1'...
 30 verbose cloneResolved done.
-31 info git [ 'checkout', '9ce85765e4f4e518408281cf94ca20489c27555e' ]
-32 verbose checkoutTreeish git+https://github.com/kromitj/mean-seed.git checkout Note: checking out '9ce85765e4f4e518408281cf94ca20489c27555e'.
+31 info git [ 'checkout', '9f975a24ecaebfd6f37f4898075e0fe45d77d4c1' ]
+32 verbose checkoutTreeish git+https://github.com/kromitj/mean-seed.git checkout Note: checking out '9f975a24ecaebfd6f37f4898075e0fe45d77d4c1'.
 32 verbose checkoutTreeish
 32 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
 32 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
@@ -60,23 +60,23 @@
 32 verbose checkoutTreeish
 32 verbose checkoutTreeish   git checkout -b new_branch_name
 32 verbose checkoutTreeish
-32 verbose checkoutTreeish HEAD is now at 9ce8576... Try to modularize project
+32 verbose checkoutTreeish HEAD is now at 9f975a2... Change name in package.json
 33 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
 34 verbose updateSubmodules git+https://github.com/kromitj/mean-seed.git submodule update
-35 verbose addLocalDirectory /Users/Administrator/.npm/mean-seed/0.1.0/package.tgz not in flight; packing
+35 verbose addLocalDirectory /Users/Administrator/.npm/meanSeed/0.1.0/package.tgz not in flight; packing
 36 verbose correctMkdir /Users/Administrator/.npm correctMkdir not in flight; initializing
-37 verbose tar pack [ '/Users/Administrator/.npm/mean-seed/0.1.0/package.tgz',
-37 verbose tar pack   '/var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-14988-ad3cb077/git-cache-a8497b60/9ce85765e4f4e518408281cf94ca20489c27555e' ]
-38 verbose tarball /Users/Administrator/.npm/mean-seed/0.1.0/package.tgz
-39 verbose folder /var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-14988-ad3cb077/git-cache-a8497b60/9ce85765e4f4e518408281cf94ca20489c27555e
-40 verbose addLocalTarball adding from inside cache /Users/Administrator/.npm/mean-seed/0.1.0/package.tgz
+37 verbose tar pack [ '/Users/Administrator/.npm/meanSeed/0.1.0/package.tgz',
+37 verbose tar pack   '/var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-15146-5463ef6b/git-cache-d05a7697/9f975a24ecaebfd6f37f4898075e0fe45d77d4c1' ]
+38 verbose tarball /Users/Administrator/.npm/meanSeed/0.1.0/package.tgz
+39 verbose folder /var/folders/g6/52kgd5rs1zv6klg05w4wtzpm0000gn/T/npm-15146-5463ef6b/git-cache-d05a7697/9f975a24ecaebfd6f37f4898075e0fe45d77d4c1
+40 verbose addLocalTarball adding from inside cache /Users/Administrator/.npm/meanSeed/0.1.0/package.tgz
 41 verbose correctMkdir /Users/Administrator/.npm correctMkdir not in flight; initializing
 42 verbose addRemoteGit data._from: git+https://github.com/kromitj/mean-seed.git
-43 verbose addRemoteGit data._resolved: git+https://github.com/kromitj/mean-seed.git#9ce85765e4f4e518408281cf94ca20489c27555e
-44 silly cache afterAdd mean-seed@0.1.0
-45 verbose afterAdd /Users/Administrator/.npm/mean-seed/0.1.0/package/package.json not in flight; writing
+43 verbose addRemoteGit data._resolved: git+https://github.com/kromitj/mean-seed.git#9f975a24ecaebfd6f37f4898075e0fe45d77d4c1
+44 silly cache afterAdd meanSeed@0.1.0
+45 verbose afterAdd /Users/Administrator/.npm/meanSeed/0.1.0/package/package.json not in flight; writing
 46 verbose correctMkdir /Users/Administrator/.npm correctMkdir not in flight; initializing
-47 verbose afterAdd /Users/Administrator/.npm/mean-seed/0.1.0/package/package.json written
+47 verbose afterAdd /Users/Administrator/.npm/meanSeed/0.1.0/package/package.json written
 48 silly install normalizeTree
 49 silly loadCurrentTree Finishing
 50 silly loadIdealTree Starting
@@ -94,7 +94,7 @@
 62 silly runTopLevelLifecycles Starting
 63 silly runTopLevelLifecycles Finishing
 64 silly install printInstalled
-65 verbose stack Error: Refusing to install mean-seed as a dependency of itself
+65 verbose stack Error: Refusing to install meanSeed as a dependency of itself
 65 verbose stack     at checkSelf (/usr/local/lib/node_modules/npm/lib/install/validate-args.js:53:14)
 65 verbose stack     at Array.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
 65 verbose stack     at LOOP (/usr/local/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
@@ -111,7 +111,7 @@
 69 error node v0.12.5
 70 error npm  v3.9.0
 71 error code ENOSELF
-72 error Refusing to install mean-seed as a dependency of itself
+72 error Refusing to install meanSeed as a dependency of itself
 73 error If you need help, you may report this error at:
 73 error     <https://github.com/npm/npm/issues>
 74 verbose exit [ 1, true ]

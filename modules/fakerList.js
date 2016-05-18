@@ -1,9 +1,9 @@
 var faker = require('faker');
 var list = {
-  f_name: function() {
+  fName: function() {
     return faker.name.firstName()
   },
-  l_name: function() {
+  lName: function() {
     return faker.name.lastName()
   },
   username: function() {
