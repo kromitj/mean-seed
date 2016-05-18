@@ -3,7 +3,7 @@ var isolateTheFields = function(schemaTemplate) {
   return Object.keys(schemaTemplate);
  };
 
- var generateSeedData = function(seedCount, schemaTemplate, fakerList) {
+ var generateSeedData = function(seedCount, schemaTemplate) {
     var fakerList = require('../modules/fakerList');
     var fields = isolateTheFields(schemaTemplate);
     var seeds = []
@@ -19,9 +19,9 @@ var isolateTheFields = function(schemaTemplate) {
     }
     console.log(JSON.stringify(seeds, null, "  "))
     return JSON.stringify(seeds, null, "  ")
- }; 
+ };
 
-exports.schemaToSeedData = function(seedCount, schemaTemplate, fakerList) {
+exports.schemaToSeedData = function(seedCount, schemaTemplate) {
 
   return generateSeedData(seedCount, schemaTemplate);
  } 
