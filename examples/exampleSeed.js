@@ -1,4 +1,4 @@
-var MeanSeed = require('./index.js');
+var MeanSeed = require('../index.js');
 var user = MeanSeed.init("heroes","User", true);
 
 user.defineSchema({"f_name":"fName", "l_name":"lName","username":"username", "password_digest":"passwordDefault"})
