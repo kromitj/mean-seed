@@ -58,8 +58,6 @@ MeanSeed.prototype.exportToDB = function() {
       });
       console.log("Seeding..." + JSON.stringify(seedData, null, ""));
     };
-  }, function () {
-    db.close();
   });
 
 }
