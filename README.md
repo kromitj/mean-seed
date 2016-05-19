@@ -1,10 +1,15 @@
 # mean-seed yoooo
 
+###exampleSeed.js
+This is an example seed file that shows the steps to take to seed a database using MeanSeed
+example.json and exampleArticle.json are populated with example seeds that were generated with by running exampleSeed.js
+
 ##How to use it
 
-1 Navigate terminal to project directy and enter:
+1 Navigate the terminal to the project directory and enter:
     
     npm install https://github.com/kromitj/mean-seed
+
 2 Create a seed.js file at the root of your application
 
 3 Require MeanSeed into seed.js
@@ -31,7 +36,7 @@ So when you defineSchema, if you put as an argument:
 
     User.defineSchema({"f_name":"fName"});
 
-this will call the FName proptery of fakerList, which generates and returns a fake name
+this will call the fName proptery of fakerList, which generates and returns a fake name
 
 6 Generate the seed data and send it to a JSON file:
     
