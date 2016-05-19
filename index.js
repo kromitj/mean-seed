@@ -1,40 +1,41 @@
 var fs = require('fs');
-function MeanSeed(dbName, collectionName, shouldDbDrop) {
-  this.database = dbName;
+
+function MeanSeed(mongooseObj, collectionName, shouldDbDrop) {
+  this.mongoose = mongooseObj;
+  // this.dbConnection = this.mongoose.connection;
   this.collection = collectionName;
   this.dbDrop = shouldDbDrop || false;
 };
 
 MeanSeed.prototype.defineSchema = function(schema) {
-  this.schemaTemplate = schema;
+  this.fields = Object.keys(schema);
+  this.schemaTemplate = this.mongoose.Schema(schema);
+  this.model = this.mongoose.model(this.collection, this.schemaTemplate)
 };
 
-MeanSeed.prototype.generateSeedData = function(seedCount, JSONFileLocation) {
-  var fakerList = require('./modules/fakerList.js');
+MeanSeed.prototype.generateSeedData = function(seedCount, fakerTypes, JSONFileLocation) {
+  var fakerList = require('./modules/fakerList.js');  
   var $this = this;  
   var seeds = [];
-  var fields = Object.keys(this.schemaTemplate);
-  
   var genSeeds = (function pushSeeds(seedCount, seeds) {
     if (seedCount == 0) { return seeds }
     var seed = {};
-    for (var field in fields) {
-      var fieldType = $this.schemaTemplate[fields[field]];      
-      var fieldValue = fakerList.getDataType(fieldType);
-      seed[fields[field]] = fieldValue();
-    }
+    for (var field in $this.fields) {
+      var fieldType = fakerTypes[field];      
+      var fieldValue = fakerList.getDataType(fieldType)();
+      seed[$this.fields[field]] = fieldValue;    }
     seeds.push(seed);
     seedCount = seedCount-1;
-    return pushSeeds(seedCount, seeds)
+    return pushSeeds(seedCount, seeds);
   })(seedCount, seeds);
-
-  $this.seedData = seeds;
-  $this.exportToJSON(JSONFileLocation);
-};  
+  this.seedData = seeds;
+  this.exportToJSON(JSONFileLocation);
+} 
+  
 
 MeanSeed.prototype.exportToJSON = function(JSONFileLocation) {
   this.JSONFile = JSONFileLocation || "seed.json";
-  $this = this
+  var $this = this
   fs.writeFile(this.JSONFile , JSON.stringify(this.seedData, null, "  "), function(err) {
     if(err) {
         return console.log(err);
@@ -45,15 +46,25 @@ MeanSeed.prototype.exportToJSON = function(JSONFileLocation) {
 };
 
 MeanSeed.prototype.exportToDB = function() {
-  $this = this;
-  var sys = require('sys')
-  var exec = require('child_process').exec;  
-  function puts(error, stdout, stderr) { sys.puts(stdout) }; 
-  exec("mongoimport --db " + this.database + " --collection " + this.collection + " --type json --file " + this.JSONFile + " --jsonArray");
-  console.log("MeanSeed just exported: ./" + this.JSONFile + ", to the collection: " + this.collection + ", inside the database: " + this.database) 
+  var $this = this;
+  var seedData = this.seedData;
+  var db = this.mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function() {
+    for (record in seedData) {
+      var newRecord = new $this.model(seedData);
+      newRecord.save(function(err, newRecored) {
+        if(err) return console.error(err)
+      });
+      console.log("Seeding..." + JSON.stringify(seedData, null, ""));
+    };
+  }, function () {
+    db.close();
+  });
+
 }
 
-exports.init = function(dbName, collectionName, shouldDbDrop) {
-var newMeanSeed = new MeanSeed(dbName, collectionName, shouldDbDrop);
+exports.init = function(mongooseObj, collectionName, shouldDbDrop) {
+var newMeanSeed = new MeanSeed(mongooseObj, collectionName, shouldDbDrop);
   return newMeanSeed;
 };
