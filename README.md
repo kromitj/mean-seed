@@ -1,7 +1,11 @@
-# mean-seed yoooo
+#MeanSeed
+##The Easy Way to Seed MongoDB
 
-###examples
-Inside the examples directory you can see exampleSeed.js
+
+MeanSeed is a Node.js module that allows you to create a schema, populate a JSON file with faker seed-data, and export it into a MondoDB collection.
+
+###examples directory
+Inside is an example seedFile(exampleSeed.js) that shows the steps to create and seed a collection use MeanSeed
 
 This file shows the steps to seed a database
 
