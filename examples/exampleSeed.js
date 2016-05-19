@@ -1,12 +1,12 @@
 var MeanSeed = require('../index.js');
-var user = MeanSeed.init("heroes","User", true);
+var user = MeanSeed.init("heroes","Haasddr", true);
 
 user.defineSchema({"f_name":"fName", "l_name":"lName","username":"username", "password_digest":"passwordDefault"})
-user.generateSeedData(10, "exampleUser.json");
+user.generateSeedData(10);
 user.exportToDB();
 
-var comment = MeanSeed.init("heroes","Comment", true);
+var user = MeanSeed.init("heroes","Userdfsd", true);
 
-comment.defineSchema({"title":"articleTitle", "content": "paragraph"});
-comment.generateSeedData(10, "./exampleArticle.json");
-comment.exportToDB();
+user.defineSchema({"f_name":"fName", "l_name":"lName","username":"username", "password_digest":"passwordDefault"})
+user.generateSeedData(10);
+user.exportToDB();
