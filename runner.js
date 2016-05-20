@@ -9,7 +9,7 @@ var schema = {
   title:  [String, ["articleTitle"]],
   author: [String, ["name"]],
   body:   [String, ["paragraph"]],
-  comments: [{ body: String, date: Date }, ["paragraph", "date"]],
+  comments: [[{ body: String, date: Date }], ["paragraph", "date"]],
   date: [{ type: Date, default: Date.now }, ["date", "dateNow"]],
   hidden: [Boolean, ["boolean"]],
   meta: [{ votes: Number, favs:  Number }, ["randInt", "randInt"]]
@@ -48,32 +48,31 @@ var getFakerTypes = function(schema) {
   });
 };
 
-var generateSeedData = function(seedCount, schemaProps, fakerTypes,JSONFileLocation) {
+var generateSeedData = function(seedCount, schemaProps, fakerTypes, schema, JSONFileLocation) {
   var seeds = [];
-  return generateSeed(seedCount, seeds, schemaProps);
+  return generateSeed(seedCount, seeds, schemaProps, schema);
 }
 
-var generateSeed = function (seedsLeft, seedsMade, schemaProps) {
+var generateSeed = function (seedsLeft, seedsMade, schemaProps, schema) {
+  console.log("schema -------" + schema)
   if (seedsLeft == 0) { return seedsMade; }
   var seed = {};
   schemaProps.forEach(function(property) {
-    seed[property] = "blah";
+    seed[property] = schema[property][0];
   });
   seedsMade.push(seed);
-  return generateSeed(--seedsLeft, seedsMade, schemaProps);
+  return generateSeed(--seedsLeft, seedsMade, schemaProps, schema);
 };
 
 
 var schemaForMongoose = getMongooseSchema(schema);
 console.log("1")
 var mongooseSchema = createMongooseSchema(mongoose, schemaForMongoose);
-console.log(mongooseSchema);
 var schemaModel = createMongooseModel(mongoose, "user", mongooseSchema);
-console.log(schemaModel)
 var schemaProperties = getSchemaProperties(schema);
 var fakerTypes = getFakerTypes(schema);
-console.log(fakerTypes);
-console.log(generateSeedData(10, schemaProperties, fakerTypes));
+var seedData = generateSeedData(10, schemaProperties, fakerTypes, schema);
+console.log(seedData);
 
 
 
