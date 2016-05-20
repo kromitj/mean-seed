@@ -24,3 +24,26 @@
     "fs": "*"
   }
 }
+var schema = {
+  { 
+    propertyName: "f_name",
+    dataType: String,
+    fakerType: "fName"
+  },
+  { 
+    propertyName: "l_name",
+    dataType: String,
+    fakerType: "lName"
+  },
+  { 
+    propertyName: "username",
+    dataType: String,
+    fakerType: "fName"
+  },
+  { 
+    propertyName: "f_name",
+    dataType: String,
+    fakerType: "fName"
+  },
+
+}
