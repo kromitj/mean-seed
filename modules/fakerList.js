@@ -20,8 +20,8 @@ var list = {
   },
 }
 
-exports.getDataType = function(dataType) {
-  return list[dataType];
+exports.fetch = function(dataType) {
+  return list[dataType]();
 };
 exports.getList = function() {
   return list;

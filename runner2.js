@@ -1,3 +1,5 @@
+
+
 function MeanSeed(dbName, collectionName) {
   this.dbName = dbName;
   this.collectionName = collectionName
@@ -57,7 +59,6 @@ MeanSeed.prototype.exportToJSONFile = function(JSONFileLocation) {
   }); 
 };
 
-// Can't get this to work properly
 MeanSeed.prototype.exportToDB = function() {
   var $this = this;
   var seedData =this.seedData;
@@ -72,8 +73,6 @@ MeanSeed.prototype.exportToDB = function() {
     };
   });
 }
-
-// this way is glitchy and doesn't use mongoose at all
 MeanSeed.prototype.exportToDBTerminal = function() {
   var dbName = this.dbName;
   var collection = this.collectionName;
@@ -85,30 +84,55 @@ MeanSeed.prototype.exportToDBTerminal = function() {
   console.log("MeanSeed just exported: ./" + JSONFile + ", to the collection: " + collection + ", inside the database: " + dbName); 
 }
 
-// MeanSeed.prototype.singleSeed = function() {
-//   var kittySchema =this.mongoose.Schema(mongooseSchema);
-//   var Kitten = this.mongoose.model('Kitten', kittySchema);
-//   var fluffy = new Kitten({ 
-//     title: "yooo",
-//     author: "mitch lroska",
-//     body: "dsfhkasdjfhkdasjfhadlkjfhldksjfldsk",
-//     comments: [
-//       {
-//         body: "yoodfado", 
-//         author: "billy bob"
-//       }, 
-//       {
-//         body: "fooshodoo", 
-//         author: "Greag man"
-//       }
-//     ]
-//   });
-//   fluffy.save(function (err, fluffy) {
-//   if (err) return console.error(err);
-//   });
-// }
+MeanSeed.prototype.singleSeed = function() {
+  var kittySchema =this.mongoose.Schema(mongooseSchema);
+  var Kitten = this.mongoose.model('Kitten', kittySchema);
+  var fluffy = new Kitten({ 
+    title: "yooo",
+    author: "mitch lroska",
+    body: "dsfhkasdjfhkdasjfhadlkjfhldksjfldsk",
+    comments: [
+      {
+        body: "yoodfado", 
+        author: "billy bob"
+      }, 
+      {
+        body: "fooshodoo", 
+        author: "Greag man"
+      }
+    ]
+  });
+  fluffy.save(function (err, fluffy) {
+  if (err) return console.error(err);
+  });
 
-exports.init = function(dbName, collectionName) {
-var newMeanSeed = new MeanSeed(dbName, collectionName);
-  return newMeanSeed;
+}
+
+var mongooseSchema = {
+  title: String,
+  author: String,
+  body: String,
+  comments: [{body: String, author: String}]
 };
+
+var fakerSchema = function() {
+  return { 
+    title: this.faker.fetch("articleTitle"),
+    author: this.faker.fetch("lName"),
+    body: this.faker.fetch("paragraph"),
+    comments: [{body: this.faker.fetch("paragraph"), author: this.faker.fetch("fName")}]
+  }
+}
+
+
+var user = new MeanSeed("heroes", "blog");
+user.singleSeed();
+user.defineSchema(mongooseSchema);
+user.generateModel();
+user.defineFakerSchema(fakerSchema);
+user.generateSeeds(10)
+user.exportToJSONFile();
+user.exportToDBTerminal();
+// console.log(user.fakerSchema());
+
+
