@@ -4,7 +4,7 @@ mean-test:
  .PHONY: test
 
 mean-makefile:
-	cp Makefile ../MakeFile
+	cp Makefile ../Makefile
 
 seedsfile:
 	touch seeds.js
