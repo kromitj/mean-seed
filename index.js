@@ -5,7 +5,7 @@ function MeanSeed(dbName, collectionName) {
   this.faker = require('./modules/fakerList.js'); 
   this.fs = require('fs');
 
-  this.mongoose.connect("mongodb://localhost/" + dbName);
+  this.mongoose.createConnection("mongodb://localhost/" + dbName);
   this.Schema = this.mongoose.Schema;
   console.log("mongodb://localhost/" + dbName);
 }

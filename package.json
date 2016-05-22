@@ -1,0 +1,28 @@
+
+{
+  "name": "meanSeed",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kromitj/mean-seed.git"
+  },
+  "author": "Mitch Kroska <kromitj@gmail.com> (http://www.mitchkroska.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kromitj/mean-seed/issues"
+  },
+  "homepage": "https://github.com/kromitj/mean-seed#readme",
+  "devDependencies": { 
+    "chai": "*",
+    "mocha": "*",
+    "faker": "*",
+    "mongoose": "*",
+    "fs": "*",
+    "require-all": "*"
+  }
+}

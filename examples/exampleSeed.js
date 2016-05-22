@@ -1,28 +1,23 @@
 var MeanSeed = require('../index.js');
+var schemas = require('require-all')(__dirname + '/schemas');
+var blogSchemas = schemas.blogSchema;
+var userSchemas = schemas.userSchema;
 
-var mongooseSchema = {
-  title: String,
-  author: String,
-  body: String,
-  comments: [{body: String, author: String}]
-};
-
-var fakerSchema = function() {
-  return { 
-    title: this.faker.fetch("hacker", "phrase"),
-    author: this.faker.fetch("name", "lastName"),
-    body: this.faker.fetch("lorem", "paragraph"),
-    comments: [{body: this.faker.fetch("lorem", "paragraph"), author: this.faker.fetch("name", "firstName")}]
-  }
-}
+var blog = MeanSeed.init("heroes", "blah");
 
 
-var user = MeanSeed.init("heroes", "blah");
-user.defineSchema(mongooseSchema);
-user.generateModel();
-user.defineFakerSchema(fakerSchema);
-user.generateSeeds(10)
-user.exportToJSONFile();
-user.exportToDBTerminal();
+blog.defineSchema(blogSchemas.schema);
+blog.generateModel();
+blog.defineFakerSchema(blogSchemas.fakerSchema);
+blog.generateSeeds(10)
+blog.exportToJSONFile();
+blog.exportToDBTerminal();
 
 
+// var user = MeanSeed.init("heroes", "people");
+// user.defineSchema(userSchemas.schema);
+// user.generateModel();
+// user.defineFakerSchema(userSchemas.fakerSchema);
+// user.generateSeeds(10);
+// user.exportToJSONFile();
+// user.exportToDBTerminal();
