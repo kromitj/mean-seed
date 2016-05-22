@@ -1,4 +1,3 @@
-var faker = require('../../modules/fakerList.js'); 
 module.exports = {
   schema: {
     title: String,
