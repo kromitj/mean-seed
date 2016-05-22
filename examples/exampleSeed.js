@@ -1,30 +1,28 @@
-
 var MeanSeed = require('../index.js');
-mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/heroes');
+var mongooseSchema = {
+  title: String,
+  author: String,
+  body: String,
+  comments: [{body: String, author: String}]
+};
 
-
-var user = MeanSeed.init(mongoose, "User");
-
-user.defineSchema({"f_name": String, "l_name": String, "username": String, "password_digest": String,})
-
-user.generateSeedData(10, ["fName", "lName", "username", "passwordDefault"]);
-
-user.exportToDB();
-
-
-
-var article = MeanSeed.init(mongoose, "Article")
-
-article.defineSchema({"title": String, "content": String})
-
-article.generateSeedData(10, ["articleTitle","paragraph"])
-
-article.exportToDB();
+var fakerSchema = function() {
+  return { 
+    title: this.faker.fetch("articleTitle"),
+    author: this.faker.fetch("lName"),
+    body: this.faker.fetch("paragraph"),
+    comments: [{body: this.faker.fetch("paragraph"), author: this.faker.fetch("fName")}]
+  }
+}
 
 
-
-
+var user = MeanSeed.init("heroes", "blah");
+user.defineSchema(mongooseSchema);
+user.generateModel();
+user.defineFakerSchema(fakerSchema);
+user.generateSeeds(10)
+user.exportToJSONFile();
+user.exportToDBTerminal();
 
 
