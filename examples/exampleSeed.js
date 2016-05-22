@@ -9,10 +9,10 @@ var mongooseSchema = {
 
 var fakerSchema = function() {
   return { 
-    title: this.faker.fetch("articleTitle"),
-    author: this.faker.fetch("lName"),
-    body: this.faker.fetch("paragraph"),
-    comments: [{body: this.faker.fetch("paragraph"), author: this.faker.fetch("fName")}]
+    title: this.faker.fetch("hacker", "phrase"),
+    author: this.faker.fetch("name", "lastName"),
+    body: this.faker.fetch("lorem", "paragraph"),
+    comments: [{body: this.faker.fetch("lorem", "paragraph"), author: this.faker.fetch("name", "firstName")}]
   }
 }
 

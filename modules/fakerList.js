@@ -1,4 +1,6 @@
 var faker = require('faker');
+
+
 var list = {
   fName: function() {
     return faker.name.firstName()
@@ -20,8 +22,8 @@ var list = {
   },
 }
 
-exports.fetch = function(dataType) {
-  return list[dataType]();
+exports.fetch = function(category, value) {
+  return faker[category][value]();
 };
 exports.getList = function() {
   return list;
