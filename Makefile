@@ -7,15 +7,15 @@ mean-makefile:
 	cp Makefile ../Makefile
 
 seedsfile:
-	touch seeds.js
+	touch ../../seeds.js
 	echo	\
 	"var MeanSeed = require('meanSeed');\n\
 	var schemas = require('require-all')(__dirname + '/schemas');\n"\
-	> seeds.js
+	> ../../seeds.js
 
 schema:
-	mkdir -p schemas
-	cd schemas; touch ${NAME}-schemas.js;	\
+	mkdir -p ../../schemas
+	cd ../../schemas; touch ${NAME}-schemas.js;	\
 	echo	\
 	"module.exports = {\n \
 	\tschema: {\n\t\t// property and fakerType pairs of the schema go here, like:\n\t\t// f_name: faker.fetch("name", "firstName");\n\t},	\
@@ -32,9 +32,7 @@ schema:
 	${NAME}.generateSeeds(${SEEDS});\n\
 	${NAME}.exportToJSONFile();\n\
 	${NAME}.exportToDBTerminal();\n"\
-	>> seeds.js
+	>> ../../seeds.js
 	
-	
-			
 
 	 
